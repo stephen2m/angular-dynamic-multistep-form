@@ -1,5 +1,7 @@
 <div>
-  <h1 class="form-heading">{{ stepItems[activeStep].label }}</h1>
+  <h1 class="form-heading">
+    {{ stepItems[activeStep].label }}
+  </h1>
 
   <ng-container
     *ngFor="let form of masterForm; let i = index; trackBy: trackByFn"
@@ -70,7 +72,7 @@
 
         <div
           class="preview-container"
-          *ngIf="activeStep === stepItems.length - 1"
+          *ngIf="activeStep === stepItems.length - 2"
         >
           <ul>
             <li
@@ -81,6 +83,13 @@
               <span>{{ formData[field] || "N/A" }}</span>
             </li>
           </ul>
+        </div>
+
+        <div
+          class="preview-container"
+          *ngIf="activeStep === stepItems.length - 1"
+        >
+          Form submission successful
         </div>
 
         <div class="button-container">
@@ -100,9 +109,7 @@
           </button>
           <button
             type="button"
-            [disabled]="
-              activeStep === stepItems.length - 1 || masterForm[i].invalid
-            "
+            *ngIf="activeStep != stepItems.length - 1 || masterForm[i].invalid"
             (click)="goToStep('next')"
           >
             Next

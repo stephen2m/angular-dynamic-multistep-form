@@ -95,13 +95,14 @@ const STEP_3 = {
   email: {
     type: "email",
     validations: {
-      required: true
+      required: true,
+      pattern: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/
     },
     errors: {
       required: "This field is required",
       pattern: "Please enter a valid email address"
     },
-    placeholder: "One Time Password"
+    placeholder: "Email Address"
   }
 };
 
@@ -109,7 +110,8 @@ const STEPS = [
   { label: "Step 1", data: STEP_1 },
   { label: "Step 2", data: STEP_2 },
   { label: "Step 3", data: STEP_3 },
-  { label: "Review and Submit", data: {} }
+  { label: "Review and Submit", data: {} },
+  { label: "Form Review Done", data: {} }
 ];
 
 export { STEPS };
